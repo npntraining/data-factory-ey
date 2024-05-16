@@ -1,5 +1,5 @@
 {
-	"name": "01_Copy_data_from_ADLS_to_Azure_SQL_Server",
+	"name": "pipeline4",
 	"properties": {
 		"activities": [
 			{
@@ -17,19 +17,6 @@
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
-						"additionalColumns": [
-							{
-								"name": "file_name",
-								"value": "$$FILEPATH"
-							},
-							{
-								"name": "date_processed",
-								"value": {
-									"value": "@utcnow()",
-									"type": "Expression"
-								}
-							}
-						],
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
@@ -43,9 +30,7 @@
 					"sink": {
 						"type": "AzureSqlSink",
 						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false,
-						"tableOption": "autoCreate",
-						"disableMetricsCollection": false
+						"sqlWriterUseTableLock": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -59,7 +44,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_ADLS_adfcontainer_user_profile_raw",
+						"referenceName": "DS_ADLS_adf_container_user_profiles_raw",
 						"type": "DatasetReference"
 					}
 				],
@@ -72,10 +57,8 @@
 			}
 		],
 		"folder": {
-			"name": "Data Movement Activities/Copy data"
+			"name": "Data Transformation Activity/Stored Procedure"
 		},
-		"annotations": [],
-		"lastPublishTime": "2024-05-15T06:45:20Z"
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
+		"annotations": []
+	}
 }
