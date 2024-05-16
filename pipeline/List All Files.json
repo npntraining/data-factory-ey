@@ -1,19 +1,7 @@
 {
-	"name": "pipeline5",
+	"name": "List All Files",
 	"properties": {
 		"activities": [
-			{
-				"name": "ForEach1",
-				"type": "ForEach",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@variables('InActiveUsers')",
-						"type": "Expression"
-					}
-				}
-			},
 			{
 				"name": "Get Files Informations",
 				"type": "GetMetadata",
