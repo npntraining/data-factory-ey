@@ -2,7 +2,7 @@
 	"name": "DS_ADLS_adfcontainer_user_profile_raw",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_eystgaccnt",
+			"referenceName": "LS_ADLS_azurestorageaccountmain",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
