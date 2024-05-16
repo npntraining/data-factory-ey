@@ -1,0 +1,43 @@
+{
+	"name": "Get metadata Demo 001",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DS_ADLS_adf_container_user_profiles_output_json",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"exists"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "JsonReadSettings"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "Data Movement Activities/Get Metadata activity"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-05-15T06:44:42Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

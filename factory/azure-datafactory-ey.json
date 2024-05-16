@@ -1,0 +1,9 @@
+{
+	"name": "azure-datafactory-ey",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ba4977ab-4c62-458d-9f34-18a71775e932",
+		"tenantId": "8fc31479-3dc4-46a4-9b03-b092690e4885"
+	}
+}

@@ -1,0 +1,84 @@
+{
+	"name": "pipeline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Fetch Records From users Tabe",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_user_info",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Filter Records with United States",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Fetch Records From users Tabe",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Fetch Records From users Tabe').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().country,'United States' )",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Filter Records_by_country_and_region",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Fetch Records From users Tabe",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Fetch Records From users Tabe').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().country,'United States' )",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "Data Movement Activities/Filter Activity"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-05-16T05:13:40Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
