@@ -1,0 +1,9 @@
+{
+	"name": "azure-ws",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f44d7a16-a843-44fa-910a-f7d225f76f96",
+		"tenantId": "4487345e-393b-4523-b32d-7a7d9fe1307e"
+	}
+}

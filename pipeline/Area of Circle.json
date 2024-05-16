@@ -1,0 +1,65 @@
+{
+	"name": "Area of Circle",
+	"properties": {
+		"activities": [
+			{
+				"name": "Radius",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Radius",
+					"value": 5
+				}
+			},
+			{
+				"name": "Area of Circle",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Radius",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Area of Circle",
+					"value": {
+						"value": "@string(mul(pipeline().parameters.Pi\n,mul(variables('Radius'),variables('Radius')))\n)",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"Pi": {
+				"type": "float",
+				"defaultValue": 3.14
+			}
+		},
+		"variables": {
+			"Radius": {
+				"type": "Integer"
+			},
+			"Area of Circle": {
+				"type": "Integer"
+			}
+		},
+		"folder": {
+			"name": "Set Variable"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-05-15T07:45:39Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

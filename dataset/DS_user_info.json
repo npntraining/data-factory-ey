@@ -2,7 +2,7 @@
 	"name": "DS_user_info",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_AzureSQLDatabase_user_db",
+			"referenceName": "LS_AzureSqlDatabase",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -53,7 +53,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "users"
+			"table": "user_info"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
