@@ -1,0 +1,58 @@
+{
+	"name": "ApppendVariable-pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "filenamePK",
+				"type": "AppendVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "filenames_pk",
+					"value": "d.csv"
+				}
+			},
+			{
+				"name": "outputpk",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "filenamePK",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "output_pk",
+					"value": {
+						"value": "@variables('filenames_pk')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"filenames_pk": {
+				"type": "Array",
+				"defaultValue": [
+					"a.csv",
+					"b.csv",
+					"c.csv"
+				]
+			},
+			"output_pk": {
+				"type": "Array"
+			}
+		},
+		"folder": {
+			"name": "Data Movement Activities/PK_Append Variable"
+		},
+		"annotations": []
+	}
+}
