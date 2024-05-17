@@ -12,6 +12,23 @@
 						"value": "@contains(pipeline().parameters.listofcities,pipeline().parameters.citytosearch)",
 						"type": "Expression"
 					},
+					"ifFalseActivities": [
+						{
+							"name": "DoesnotExists",
+							"description": "",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "ifcityExists",
+								"value": "No"
+							}
+						}
+					],
 					"ifTrueActivities": [
 						{
 							"name": "ValueExists",
