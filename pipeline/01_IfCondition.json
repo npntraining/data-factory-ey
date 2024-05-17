@@ -1,0 +1,77 @@
+{
+	"name": "01_IfCondition",
+	"properties": {
+		"activities": [
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(\n    pipeline().parameters.listOfCities,\n    pipeline().parameters.cityToSearch\n    )",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "Value doesnt exist",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "ifCityExists ",
+								"value": "No"
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "Yes the value exist",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "ifCityExists ",
+								"value": "True"
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"listOfCities": {
+				"type": "array",
+				"defaultValue": [
+					"New York",
+					"London",
+					"Tokyo",
+					"Delhi",
+					"Bengaluru",
+					"Chennai"
+				]
+			},
+			"cityToSearch": {
+				"type": "string",
+				"defaultValue": "Mysore"
+			}
+		},
+		"variables": {
+			"ifCityExists ": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Control Flow Activities"
+		},
+		"annotations": []
+	}
+}
