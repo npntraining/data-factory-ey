@@ -1,6 +1,36 @@
 {
 	"name": "01_If_Condition",
 	"properties": {
+		"activities": [
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.listofcities,pipeline().parameters.citytosearch)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "ValueExists",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "ifcityExists",
+								"value": "True"
+							}
+						}
+					]
+				}
+			}
+		],
 		"parameters": {
 			"listofcities": {
 				"type": "string",
