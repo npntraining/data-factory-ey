@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@contains(\n    pipeline().parameters.listOfCities,\n    pipeline().parameters.cityToSearch\n    )",
+						"value": "@contains(pipeline().parameters.listOfCities,pipeline().parameters.cityToSearch\n)",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
@@ -24,7 +24,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"variableName": "ifCityExists ",
-								"value": "No"
+								"value": "No the value dont exists"
 							}
 						}
 					],
