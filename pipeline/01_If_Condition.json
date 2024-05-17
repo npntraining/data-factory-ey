@@ -1,0 +1,30 @@
+{
+	"name": "01_If_Condition",
+	"properties": {
+		"parameters": {
+			"listofcities": {
+				"type": "string",
+				"defaultValue": [
+					"New York",
+					"London",
+					"Delhi",
+					"Bengakuru",
+					"Chennai"
+				]
+			},
+			"citytosearch": {
+				"type": "string",
+				"defaultValue": "Mysore"
+			}
+		},
+		"variables": {
+			"ifcityExists": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "PK_Control Flow Activity"
+		},
+		"annotations": []
+	}
+}
