@@ -9,12 +9,12 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@contains(pipeline().parameters.listOfCities,pipeline().parameters.cityToSearch\n)",
+						"value": "@contains(pipeline().parameters.List_Of_cities,pipeline().parameters.CityToSearch)\n",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
 						{
-							"name": "Value doesnt exist",
+							"name": "Value Does not Exists",
 							"type": "SetVariable",
 							"dependsOn": [],
 							"policy": {
@@ -23,14 +23,14 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "ifCityExists ",
-								"value": "No the value dont exists"
+								"variableName": "iFCityExists",
+								"value": "False"
 							}
 						}
 					],
 					"ifTrueActivities": [
 						{
-							"name": "Yes the value exist",
+							"name": "Value Exists",
 							"type": "SetVariable",
 							"dependsOn": [],
 							"policy": {
@@ -39,7 +39,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "ifCityExists ",
+								"variableName": "iFCityExists",
 								"value": "True"
 							}
 						}
@@ -48,29 +48,26 @@
 			}
 		],
 		"parameters": {
-			"listOfCities": {
+			"List_Of_cities": {
 				"type": "array",
 				"defaultValue": [
 					"New York",
 					"London",
-					"Tokyo",
-					"Delhi",
-					"Bengaluru",
-					"Chennai"
+					"India"
 				]
 			},
-			"cityToSearch": {
+			"CityToSearch": {
 				"type": "string",
 				"defaultValue": "Mysore"
 			}
 		},
 		"variables": {
-			"ifCityExists ": {
+			"iFCityExists": {
 				"type": "String"
 			}
 		},
 		"folder": {
-			"name": "Control Flow Activities"
+			"name": "Control Flow activities/01_IF_condition"
 		},
 		"annotations": []
 	}
