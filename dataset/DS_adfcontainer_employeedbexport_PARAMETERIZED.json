@@ -1,0 +1,41 @@
+{
+	"name": "DS_adfcontainer_employeedbexport_PARAMETERIZED",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_azurestorageaccountmain",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"SchemaNameDS": {
+				"type": "string"
+			},
+			"TableNameDS": {
+				"type": "string"
+			},
+			"FileNameDS": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().FileNameDS",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat('employeedbexport','/',dataset().SchemaNameDS,'/',dataset().TableNameDS)",
+					"type": "Expression"
+				},
+				"fileSystem": "adfcontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
