@@ -5,23 +5,39 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"linkedService": {
-						"referenceName": "LS_AzureSQL_sandboxdb",
-						"type": "LinkedServiceReference"
+					"dataset": {
+						"referenceName": "PK_AzureSqlTable_Emp_Mnmgt",
+						"type": "DatasetReference"
 					},
-					"name": "EmployeeTable"
+					"name": "EmployeeDataset"
+				},
+				{
+					"name": "source1"
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "selectrequiredColumns"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          DepartmentID as integer,",
+				"          DepartmentName as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     format: 'table',",
-				"     store: 'sqlserver',",
-				"     schemaName: '',",
-				"     tableName: '',",
-				"     isolationLevel: 'READ_UNCOMMITTED') ~> EmployeeTable"
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> EmployeeDataset",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source1",
+				"EmployeeDataset select(mapColumn(",
+				"          DepartmentID,",
+				"          DepartmentName",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectrequiredColumns"
 			]
 		}
 	}
