@@ -1,0 +1,22 @@
+{
+	"name": "PK_AzureSqlTable_Emp_Mnmgt",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PK_AzureSqlDatabase_EmpMngt",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DepartmentID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DepartmentName",
+				"type": "varchar"
+			}
+		]
+	}
+}
