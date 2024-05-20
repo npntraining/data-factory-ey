@@ -1,0 +1,12 @@
+{
+	"name": "DS_AzureSQL_sandbox_TABLE_LIST",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSQL_sandboxdb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
